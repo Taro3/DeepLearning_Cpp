@@ -23,10 +23,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+HEADERS += \
+    softmaxfunction.h
 
 INCLUDEPATH += ../../..
 
 QMAKE_CXXFLAGS += -isystem $${PWD}/../.. -Wno-attributes
-
-HEADERS += \
-    softmaxfunction.h
