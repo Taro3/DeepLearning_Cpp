@@ -20,6 +20,17 @@ public:
     double mean_squared_error(Eigen::VectorXd y, Eigen::VectorXd t) {
         return 0.5 * (y - t).squaredNorm();
     }
+    /**
+     * @brief       cross_entropy_error
+     *              交差エントロピー誤差を計算する
+     * @param[in]   y   ニューラルネットワークの出力
+     * @param[in]   t   教師データ
+     * @return      交差エントロピー誤差値
+     */
+    double cross_entropy_error(Eigen::VectorXd y, Eigen::VectorXd t) {
+        double delta = 1e-007;
+        return -(t.array() * (y.array() + delta).log()).sum();
+    }
 
 signals:
 

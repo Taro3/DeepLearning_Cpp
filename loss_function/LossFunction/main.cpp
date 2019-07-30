@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 
     LossFunction lf;
     Eigen::VectorXd t(10);
+    //----- 2乗和誤差
     // 「2」を正解とする
     t << 0, 0, 1, 0, 0, 0, 0, 0, 0, 0;
 
@@ -24,6 +25,13 @@ int main(int argc, char *argv[])
     // 例2:「7」の確率が最も高い場合(0.6)
     y << 0.1, 0.05, 0.1, 0.0, 0.05, 0.1, 0.0, 0.6, 0.0, 0.0;
     std::cout << lf.mean_squared_error(y, t) << std::endl;
+
+    //----- 交差エントロピー誤差
+    y << 0.1, 0.05, 0.6, 0.0, 0.05, 0.1, 0.0, 0.1, 0.0, 0.0;
+    std::cout << lf.cross_entropy_error(y, t) << std::endl;
+
+    y << 0.1, 0.05, 0.1, 0.0, 0.05, 0.1, 0.0, 0.6, 0.0, 0.0;
+    std::cout << lf.cross_entropy_error(y, t) << std::endl;
 
     return 0;
 }
